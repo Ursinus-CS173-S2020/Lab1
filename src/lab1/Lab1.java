@@ -28,7 +28,7 @@ public class Lab1 {
         // TODO: Convert *a* from astronomical units to meters
 
         
-        // TODO: Implement the formula and store it in result
+        // TODO: Implement the formula and store it in yearDays
         double yearDays = 0.0;
         System.out.println("A year is " + yearDays + " days");
     }
