@@ -13,7 +13,7 @@ public class Lab1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        final double AU_TO_METERS = 1.495979e11;
+        final double AU_TO_METERS = 149597870700.0;
         // TODO: Define constants for *M*, the mass of the sun in kg
         // and *G*, the gravitational constant in m^3/(kg*sec)
         
