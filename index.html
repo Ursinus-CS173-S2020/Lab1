@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 173: Introduction To Computer Science, Spring 2020</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 173: Introduction To Computer Science, Spring 2020</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2>Lab 1: Kepler's Third Law</h2>
+									</header>
+
+									<div id="page-content">
+								    
+								    <h3>Getting The Code / Submission Instructions</h3>
+									    <p>
+                                        <a href = "https://github.com/Ursinus-CS173-S2020/Lab1/archive/master.zip">Click here</a> to download the .zip file for the skeleton code for this lab.  When you are finished, please submit the file <code>Lab1.java</code>, which can be found in the <code>src/</code> directory of your NetBeans project.
+                                        </p>
+                                        
+                                    <h3>Description</h3>
+									
+										<p>
+                                            The purpose of this lab is to get students to practice with declaring variables, declaring constants, and writing mathematical expressions with the proper order of operations, all while writing clean code.  Students will write a program that implements <a href = "https://en.wikipedia.org/wiki/Kepler's_laws_of_planetary_motion#Third_law_of_Kepler">Kepler's Third Law</a>, which gives a formula to determine the time of orbit of an object in the solar system given its mass <b>m</b> and the semi-major axis of the ellipse of its orbit (which is roughly its distance to the sun).
+                                        </p>
+
+                                        <p>
+                                            Given the mass <b>m</b> of a planet, as well as <b>a</b>, the length of the semi-major axis of its orbit it is possible to determine the length of its orbit, <b>T</b>, with the following formula
+                                        </p>
+
+                                        <h2>
+                                            \[ T = \sqrt{ \frac{4 \pi^2 a^3}{G(M+m)} }\]
+                                        </h2>
+
+                                        <p>
+                                            <ul>
+                                                <li>The mass of the sun <b>M = 1.989*10<SUP>30</SUP> kg </b>.  In scientific notation, this can be written as <b>1.989e30</b>, and Java will understand that.</li>
+                                                <li>The gravitational constant <b>G = 6.6743015e-11</b> meters<SUP>3</SUP>/(kg*sec<SUP>2</SUP>)</li>
+                                            </ul>
+                                        </p>
+
+                                        <p>
+                                            You will implement a program to determine the length of a year on a planet (the length of its orbit) in days, given its mass <b>m</b> and its semi-major axis <b>a</b>.  The table below shows measured data of all the planets in our solar system, which you will use to check your program<BR>
+                                            <b>NOTE: The formula may not match exactly, but the year lengths should be close</b>.
+                                        </p>
+
+
+                                        <table>
+                                            <tr>
+                                                <td>Planet</td><td>Mass (kg)</td><td>Semi-major axis (AU)</td><td>Length of Year (Days)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mercury</td><td>3.285 x 10<SUP>23</SUP> kg</td><td>0.38710 AU</td><td>87.9693 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Venus</td><td>4.867 x 10<SUP>24</SUP> kg</td><td>0.72333 AU</td><td>224.7008 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Earth</td><td>5.972 x 10<SUP>24</SUP> kg</td><td>1 AU</td><td>365.2564 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mars</td><td>6.39 x 10<SUP>23</SUP></td><td>1.52366 AU</td><td>686.9796 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jupiter</td><td>1.898 x 10<SUP>27</SUP></td><td> 	5.20336 AU</td><td>4332.8201 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Saturn</td><td>5.683 x 10<SUP>26</SUP> kg</td><td>9.53707 AU</td><td>10775.599 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Uranus</td><td>8.681 x 10<SUP>25</SUP> kg</td><td> 	19.1913 AU</td><td>30687.153 days</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Neptune</td><td>1.024 x 10<SUP>26</SUP> kg</td><td>30.0690 </td><td>60190.03 days</td>
+                                            </tr>
+                                        </table>
+
+Here are some tips for dealing with converting units and writing good code:
+                                        <ul>
+                                            <li>
+                                                The length of the semi-major axis <b>a</b> is given in astronomical units (AU), or a length of measurement roughly equal to the distance from the earth to the sun.  Before you apply the above formula, you will need to convert <b>a</b> to meters by multiplying it by this distance, which is approximately 149,597,870,700 meters.
+                                            </li>
+                                            <li>
+                                                The formula above will give the period in seconds, <b>but you will need to convert it to years</b>, so be sure to divide it by the number of seconds in a year (you can write this as an arithmetic expression).
+                                            </li>
+                                            <li>
+                                                All constants could be declared as <code>final</code> variables, and they should be in all capital letters.
+                                            </li>
+                                            <li>PI in Java is <code>Math.PI</code></li>
+                                            <li>
+                                                To take a square root of a variable (e.g. <b>x</b>), write <code>Math.sqrt(x)</code>
+                                            </li>
+                                            <li>
+                                                To raise a number (e.g. <b>x</b>) to a power (e.g. <b>p</b>), write <code>Math.pow(x, p)</code>
+                                            </li>
+                                            <li>
+                                                If you try to implement the above formula all one one line, it will very messy and difficult to debug.  Instead, you should split up different parts of the calculation on different lines.  For example, you could first compute the value inside of the square root, and then take its square root.  Then, you could convert it from seconds into years.
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                            </div>
+						</div>
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">General</a></li>
+										<li><a href = "../../Software/index.html">Software</a></li>
+										<li><a href = "../../Schedule/index.html">Schedule</a></li>
+										<li><a href = "../../style.html">Style Guide</a></li>
+                                        <li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/index.html">Main Labs Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../../Labs/Lab1/index.html">Lab1: Kepler's Third Law</a></li>
+                                                        <li><a href = "../../Labs/Lab2_LeapYears/index.html">Lab2: Leap Years and JUnit</a></li>
+                                                        <li><a href = "../../Labs/Lab4_EpochOverflow/index.html">Lab4: Epoch Time Overflow</a></li>
+                                                        <li><a href = "../../Labs/Lab5_Arrays/index.html">Lab5: Weighted Average, Min Index</a></li>
+                                                        <li><a href = "../../Labs/Lab6_Filtering/index.html">Lab6: Audio Filtering</a></li>
+                                                        <li><a href = "../../Labs/Lab7_COVID19/index.html">Lab7: Epidemic Spreading / Flattening The Curve</a></li>
+                                                        <li><a href = "../../Labs/Lab8_BinaryStrings/index.html">Lab8: Binary Strings</a></li>
+                                                        <li><a href = "../../Labs/Lab9_TicTacToe/index.html">Lab9: Tic Tac Toe</a></li>
+                                                        <li><a href = "../../Modules/Lab10_InsertionSort/video1.html">Lab10: Insertion Sort</a></li>
+                                                        <li><a href = "../../Modules/Lab11_Recursion/video1.html">Lab11: Recursion And Merge Sort</a></li>
+                                                    </ul>
+												</li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/index.html">Main Assignments Page</a></li>
+												<li>
+													<ul>
+                                                        <li><a href = "../../Assignments/HW0/index.html">HW0: Warmup</a></li>
+                                                        <li><a href = "../../Assignments/HW1/index.html">HW1: Evergreen Field Trip</a></li>
+                                                        <li><a href = "../../Assignments/HW2_FinancialAidCalculation/index.html">HW2: Financial Aid Calculation</a></li>
+                                                        <li><a href = "../../Assignments/HW3_WeekdayCalculator/index.html">HW3: Weekday Calculator</a></li>
+                                                        <li><a href = "../../Assignments/HW4_ChaosGame/index.html">HW4: The Chaos Game</a></li>
+                                                        <li><a href = "../../Assignments/HW5_GuitarStringSynth/index.html">HW5: Guitar String Synthesis</a></li>
+                                                        <li><a href = "../../Assignments/HW6_PseudoRandomCrypto/index.html">HW6: Spy Games</a></li>
+                                                        <li><a href = "../../Assignments/HW7_ASCIIArt/index.html">HW7: ASCII Art</a></li>
+                                                        <li><a href = "../../Assignments/HW8_NintendoAmerica/index.html">HW8: Nintendo America</a></li>
+                                                    </ul>
+												</li>
+											</ul>
+										</li>
+										<!--<li><a href = "../../Raffle/index.html">Raffle</a></li>!-->
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements		
+										<ul>
+										<li><a href = "../../Assignments/HW7_ASCIIArt/artcontest.html">Art contest submissions</a> for <a href = "../../Assignments/HW7_ASCIIArt/index.html">HW7</a> are up!</li>
+										</ul>								
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>		
+			
+            <!-- Start of StatCounter Code -->
+            <script type="text/javascript">
+            var sc_project=7309088; 
+            var sc_invisible=1; 
+            var sc_security="f655b56d"; 
+            </script>
+            <script type="text/javascript"
+            src="http://www.statcounter.com/counter/counter.js"></script>
+            <noscript><div class="statcounter"><a title="free hit counter"
+            href="http://statcounter.com/" target="_blank"><img class="statcounter"
+            src="http://c.statcounter.com/7309088/0/f655b56d/1/" alt="free hit
+            counter"></a></div></noscript>
+            <!-- End of StatCounter Code -->
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+
